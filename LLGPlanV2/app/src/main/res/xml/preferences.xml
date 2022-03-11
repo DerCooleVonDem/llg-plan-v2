@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        app:key="dark_mode_enabled"
+        app:title="Dark Mode Enabled" />
+
+    <!--
+    <PreferenceCategory
+        app:key="internet"
+        app:title="Internet">
+
+        <SwitchPreferenceCompat
+            app:key="push_notification_enabled"
+            app:title="Push Notification Enabled" />
+
+        <EditTextPreference
+            app:key="sync_frequency"
+            app:title="Sync Frequenzy"
+            app:useSimpleSummaryProvider="true"
+            app:dependency="push_notification_enabled"/>
+    </PreferenceCategory>
+
+    <SwitchPreferenceCompat
+        app:key="secrets_enabled"
+        app:title="Secrets Enabled"/>
+
+        -->
+    <Preference
+        app:key="version"
+        app:title="Build Version"
+        app:summary="1.0.0"/>
+</PreferenceScreen>
