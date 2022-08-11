@@ -1,19 +1,20 @@
 package com.johannes.llgplanv2.ui.home
 
 import android.content.Context
-import android.graphics.Rect
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.johannes.llgplanv2.BuildConfig
+import com.johannes.llgplanv2.ConstValues
 import com.johannes.llgplanv2.MainActivity
 import com.johannes.llgplanv2.R
 import com.johannes.llgplanv2.api.*
@@ -21,7 +22,6 @@ import com.johannes.llgplanv2.databinding.FragmentHomeBinding
 import com.johannes.llgplanv2.databinding.PopupStudentEditorBinding
 import com.johannes.llgplanv2.settings.PrefKeys
 import com.johannes.llgplanv2.ui.InformationCardView
-import com.johannes.llgplanv2.ui.TileDrawable
 import com.johannes.llgplanv2.ui.eventlist.EventListAdapter
 import com.johannes.llgplanv2.ui.quickplan.QuickPlanViewPager2Adapter
 import com.johannes.llgplanv2.ui.studenteditor.StudentListAdapter
@@ -29,9 +29,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.lang.NullPointerException
-import java.net.SocketTimeoutException
-import java.net.UnknownHostException
+import org.jsoup.Jsoup
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -58,7 +56,24 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         // BETA WARNING
-        binding.infoCardViews.setEnabled(InformationCardView.Type.BETA_WARNING, true)
+        //binding.infoCardViews.setEnabled(InformationCardView.Type.BETA_WARNING, true)
+
+        // OUTDATED WARNING
+        lifecycleScope.launch(Dispatchers.IO) {
+            MainActivity.instance.tryNetworkRequest {
+                val response = Jsoup.connect(ConstValues.VERSION_CODE_URL)
+                    .ignoreContentType(true).execute()
+                val versionCode = response.body().toInt()
+                val outdated = versionCode > BuildConfig.VERSION_CODE
+                withContext(Dispatchers.Main) {
+                    binding.infoCardViews.setEnabled(
+                        InformationCardView.Type.APP_VERSION_OUTDATED, outdated)
+                }
+            }
+        }
+        binding.infoCardViews.addClickEvent(InformationCardView.Type.APP_VERSION_OUTDATED) {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(ConstValues.APP_RELEASE_URL)))
+        }
 
 
         // QuickPlan

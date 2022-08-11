@@ -29,8 +29,6 @@
     <string name="no_teacher_list_found">Liste der Lehrer nicht gefunden.</string>
     <string name="email_copied_to_clipboard">Email wurde Kopiert</string>
 
-    <string name="beta_warning">Achtung: Beta Version</string>
-
     <string name="secrets_activated">Secrets Aktiviert</string>
     <string name="secrets_deactivated">Secrets Deaktiviert</string>
 
@@ -60,6 +58,10 @@
     <string name="student_sync_no_results">Keine Ergebnisse</string>
     <string name="student_sync_too_many_results">Zu viele Ergebnisse (bitte genauer Suchen)</string>
     <string name="student_sync_failed">Suche Fehlgeschlagen</string>
+
+    <!-- Error Messages -->
+    <string name="app_version_outdated">App Version ist nicht aktuell!\n(Click für Download)</string>
+    <string name="beta_warning">Achtung: Beta Version</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>

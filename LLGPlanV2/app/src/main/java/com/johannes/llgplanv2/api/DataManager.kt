@@ -8,7 +8,7 @@ import java.io.File
 object DataManager {
     // General
     val generalFilePath = ""
-    val defaultTimeoutDuration = 5*1000 // 5 seconds
+    val defaultTimeoutDuration = 10*1000 // 10 seconds
 
     // Timetables
     var timetableTimeoutDuration = defaultTimeoutDuration
