@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
-import com.johannes.llgplanv2.ConstValues
 import com.johannes.llgplanv2.R
 import com.johannes.llgplanv2.databinding.FragmentSlpLoginBinding
 import com.johannes.llgplanv2.settings.PrefKeys
@@ -47,9 +46,7 @@ class SlpLoginFragment(val loginActivity: LoginActivity) : Fragment() {
     }
 
     private fun confirmCredentials() {
-        if (
-            binding.usernameEditText.text.toString().trim() == ConstValues.SLP_LOGIN_USER &&
-            binding.passwordEditText.text.toString() == ConstValues.SLP_LOGIN_PASSWORD) {
+        if (true) { // here you would check if they are correct
                 loginActivity.sharedPref.edit().also {
                     it.putBoolean(PrefKeys.slpLoginDone, true)
                     it.putString(PrefKeys.slpLoginUser, binding.usernameEditText.text.toString().trim())
