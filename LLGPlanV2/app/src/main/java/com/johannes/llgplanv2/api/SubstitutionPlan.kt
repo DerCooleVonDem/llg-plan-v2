@@ -1,20 +1,19 @@
 package com.johannes.llgplanv2.api
 
 import android.content.Context
-import org.jsoup.Jsoup
-import org.jsoup.Connection
-import org.jsoup.nodes.Document
-import org.jsoup.nodes.Element
-import java.text.SimpleDateFormat
-import java.util.*
 import com.google.gson.Gson
 import com.google.gson.internal.LinkedTreeMap
 import com.google.gson.reflect.TypeToken
+import com.johannes.llgplanv2.MainActivity
+import org.jsoup.Connection
 import org.jsoup.HttpStatusException
+import org.jsoup.Jsoup
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.net.SocketTimeoutException
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.zip.GZIPInputStream
 import java.util.zip.GZIPOutputStream
 
@@ -45,10 +44,14 @@ class SubstitutionPlan() {
         val currentTime = "${SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SS", Locale.GERMANY)
             .format(Calendar.getInstance(Locale.GERMANY).time)}Z"
 
+
+        val loginUser = MainActivity.sharedPref.getString("dsb_login_user", "153482") ?: "153482"
+        val loginPassword = MainActivity.sharedPref.getString("dsb_login_password", "llg-schueler") ?: "llg-schueler"
+
         // parameters for server
         val params = HashMap<String, String>()
-        params["UserId"] = "153482"
-        params["UserPW"] = "llg-schueler"
+        params["UserId"] = loginUser
+        params["UserPW"] = loginPassword
         params["AppVersion"] = "2.5.9"
         params["Language"] = "de"
         params["OsVersion"] = "27.8.1.0"

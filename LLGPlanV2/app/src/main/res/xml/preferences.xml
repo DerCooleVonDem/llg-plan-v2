@@ -3,7 +3,24 @@
 
     <SwitchPreferenceCompat
         app:key="dark_mode_enabled"
-        app:title="Dark Mode Enabled" />
+        app:title="Dark Mode Enabled"
+        app:defaultValue="true"/>
+
+    <EditTextPreference
+        app:key="dsb_login_user"
+        app:title="DSB User"/>
+
+    <EditTextPreference
+        app:key="dsb_login_password"
+        app:title="DSB Password"/>
+
+    <EditTextPreference
+        app:key="slp_login_user"
+        app:title="SLP User"/>
+
+    <EditTextPreference
+        app:key="slp_login_password"
+        app:title="SLP Password"/>
 
     <!--
     <PreferenceCategory
@@ -29,5 +46,5 @@
     <Preference
         app:key="version"
         app:title="Build Version"
-        app:summary="1.0.0"/>
+        app:summary="v0.0.0"/>
 </PreferenceScreen>

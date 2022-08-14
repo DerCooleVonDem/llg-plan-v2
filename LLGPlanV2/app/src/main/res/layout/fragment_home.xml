@@ -6,25 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <Button
-        android:id="@+id/btn_student_select"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_top_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/card_background"
-        android:text="@string/select_student"
-        android:textColor="?attr/colorOnPrimary"
-        android:textSize="@dimen/textSize"/>
+        android:layout_marginVertical="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="13dp">
+
+        <Button
+            android:id="@+id/btn_student_select"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/btn_settings"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/card_background"
+            android:text="@string/select_student"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="@dimen/textSize"/>
+
+        <ImageButton
+            android:id="@+id/btn_settings"
+            android:layout_width="wrap_content"
+            android:adjustViewBounds="true"
+            android:layout_height="0dp"
+            android:layout_margin="0dp"
+            android:paddingVertical="7dp"
+            android:paddingRight="0dp"
+            android:paddingLeft="10dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintLeft_toRightOf="@id/btn_student_select"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/ic_settings_24dp"
+            android:background="@android:color/transparent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     <!-- in case no student is selected -->
     <TextView
         android:id="@+id/no_student_selected_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btn_student_select"
+        app:layout_constraintTop_toBottomOf="@id/constraint_layout_top_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -39,7 +71,7 @@
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/btn_student_select"
+        app:layout_constraintTop_toBottomOf="@id/constraint_layout_top_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">

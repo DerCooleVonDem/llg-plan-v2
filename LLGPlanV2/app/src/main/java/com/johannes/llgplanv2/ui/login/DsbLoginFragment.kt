@@ -1,11 +1,12 @@
 package com.johannes.llgplanv2.ui.login
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import androidx.fragment.app.Fragment
+import com.johannes.llgplanv2.ConstValues
 import com.johannes.llgplanv2.R
 import com.johannes.llgplanv2.databinding.FragmentDsbLoginBinding
 import com.johannes.llgplanv2.settings.PrefKeys
@@ -47,9 +48,13 @@ class DsbLoginFragment(val loginActivity: LoginActivity) : Fragment() {
 
     private fun confirmCredentials() {
         if (
-            binding.usernameEditText.text.toString().trim() == "153482" &&
-            binding.passwordEditText.text.toString() == "llg-schueler") {
-            loginActivity.sharedPref.edit().putBoolean(PrefKeys.dsbLoginDone, true).apply()
+            binding.usernameEditText.text.toString().trim() == ConstValues.DSB_LOGIN_USER &&
+            binding.passwordEditText.text.toString() == ConstValues.DSB_LOGIN_PASSWORD) {
+            loginActivity.sharedPref.edit().also {
+                it.putBoolean(PrefKeys.dsbLoginDone, true)
+                it.putString(PrefKeys.dsbLoginUser, binding.usernameEditText.text.toString().trim())
+                it.putString(PrefKeys.dsbLoginPassword, binding.passwordEditText.text.toString())
+            }.apply()
             loginActivity.nextFragment()
         } else {
             binding.credentialsWrongCardView.visibility = View.VISIBLE

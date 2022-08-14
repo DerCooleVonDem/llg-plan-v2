@@ -3,15 +3,14 @@ package com.johannes.llgplanv2.api
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import org.jsoup.Jsoup
+import com.johannes.llgplanv2.MainActivity
 import org.jsoup.Connection
 import org.jsoup.HttpStatusException
+import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import java.io.File
 import java.net.SocketTimeoutException
-import java.text.SimpleDateFormat
-import java.util.*
 
 class Timetable(
     private val student: Student) {
@@ -24,12 +23,15 @@ class Timetable(
         // download webpage
         val loginPageURL = "https://selbstlernportal.de/html/planinfo/planinfo_start.php"
         val homePageURL = "https://www.landrat-lucas.org/"
+
+        val loginUser = MainActivity.sharedPref.getString("slp_login_user", "LLG") ?: "LLG"
+        val loginPassword = MainActivity.sharedPref.getString("slp_login_password", "llg") ?: "llg"
         // params
         val loginParams: MutableMap<String, String> = mutableMapOf(
             "jsIsActive" to "0",
             "group" to "lev-llg",
-            "login" to "LLG",
-            "pw" to "llg",
+            "login" to loginUser,
+            "pw" to loginPassword,
             "checkLogin" to ""
         )
         val searchParams: MutableMap<String, String> = mutableMapOf(

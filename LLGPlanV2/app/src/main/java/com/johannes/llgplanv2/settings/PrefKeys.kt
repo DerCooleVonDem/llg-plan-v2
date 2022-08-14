@@ -11,7 +11,13 @@ class PrefKeys {
         )
 
         const val firstLaunch = "first_launch"
+
         const val slpLoginDone = "slp_login_done"
+        const val slpLoginUser = "slp_login_user"
+        const val slpLoginPassword = "slp_login_password"
+
         const val dsbLoginDone = "dsb_login_done"
+        const val dsbLoginUser = "dsb_login_user"
+        const val dsbLoginPassword = "dsb_login_password"
     }
 }

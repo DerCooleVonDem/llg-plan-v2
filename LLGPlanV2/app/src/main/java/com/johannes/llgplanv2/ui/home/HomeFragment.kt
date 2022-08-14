@@ -21,6 +21,7 @@ import com.johannes.llgplanv2.api.*
 import com.johannes.llgplanv2.databinding.FragmentHomeBinding
 import com.johannes.llgplanv2.databinding.PopupStudentEditorBinding
 import com.johannes.llgplanv2.settings.PrefKeys
+import com.johannes.llgplanv2.settings.SettingsActivity
 import com.johannes.llgplanv2.ui.InformationCardView
 import com.johannes.llgplanv2.ui.eventlist.EventListAdapter
 import com.johannes.llgplanv2.ui.quickplan.QuickPlanViewPager2Adapter
@@ -75,6 +76,10 @@ class HomeFragment : Fragment() {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(ConstValues.APP_RELEASE_URL)))
         }
 
+        // Settings Button
+        binding.btnSettings.setOnClickListener {
+            startActivity(Intent(context, SettingsActivity::class.java))
+        }
 
         // QuickPlan
         quickPlanAdapter = QuickPlanViewPager2Adapter(binding.quickPlanViewPager2, 5)
@@ -260,7 +265,7 @@ class HomeFragment : Fragment() {
         // Student Editor Popup Window
         val popupBinding = PopupStudentEditorBinding.inflate(layoutInflater)
         val popupWindow = PopupWindow(popupBinding.root,
-            binding.btnStudentSelect.width,
+            binding.constraintLayoutTopButton.width,
             LinearLayout.LayoutParams.WRAP_CONTENT,true)
 
         fun showErrorDialog(errorMessage: String) {
@@ -373,7 +378,7 @@ class HomeFragment : Fragment() {
         popupWindow.softInputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
 
         //popupWindow.animationStyle = R.style.StudentEditorPopupAnimation
-        popupWindow.showAsDropDown(binding.btnStudentSelect, 0, 40, Gravity.CENTER_HORIZONTAL)
+        popupWindow.showAsDropDown(binding.constraintLayoutTopButton, 0, 40, Gravity.CENTER_HORIZONTAL)
 
         // dim background
         val container = popupWindow.contentView.rootView

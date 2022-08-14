@@ -1,12 +1,9 @@
 package com.johannes.llgplanv2.ui.login
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import com.johannes.llgplanv2.BuildConfig
-import com.johannes.llgplanv2.MainActivity
+import androidx.preference.PreferenceManager
 import com.johannes.llgplanv2.R
 import com.johannes.llgplanv2.settings.PrefKeys
 
@@ -21,7 +18,7 @@ class LoginActivity : AppCompatActivity() {
         setTheme(R.style.Theme_LLGPlanV2)
         setContentView(R.layout.login_activity)
 
-        sharedPref = getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
         slpLoginDone = sharedPref.getBoolean(PrefKeys.slpLoginDone, false)
         dsbLoginDone = sharedPref.getBoolean(PrefKeys.dsbLoginDone, false)
 

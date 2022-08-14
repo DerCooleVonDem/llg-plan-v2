@@ -5,15 +5,12 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import java.text.ParseException
-import org.jsoup.UncheckedIOException
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.Gravity
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.annotation.ColorInt
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -22,6 +19,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import androidx.preference.PreferenceManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.johannes.llgplanv2.api.*
 import com.johannes.llgplanv2.databinding.ActivityMainBinding
@@ -31,9 +30,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.lang.Exception
+import org.jsoup.UncheckedIOException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
+import java.text.ParseException
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -60,11 +60,13 @@ class MainActivity : AppCompatActivity() {
 
 
         // TEMPORARY
-        sharedPref = getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
+        //sharedPref = getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
         val secretsEnabled = sharedPref.getBoolean(PrefKeys.secretsEnabled, false)
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-
+        AppCompatDelegate.setDefaultNightMode(
+            if (sharedPref.getBoolean("dark_mode_enabled", true)) AppCompatDelegate.MODE_NIGHT_YES
+            else AppCompatDelegate.MODE_NIGHT_NO)
 
         super.onCreate(savedInstanceState)
 
