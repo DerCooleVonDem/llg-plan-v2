@@ -1,5 +1,6 @@
 package com.johannes.llgplanv2
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -23,13 +24,14 @@ import androidx.preference.PreferenceManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.johannes.llgplanv2.api.*
-import com.johannes.llgplanv2.databinding.ActivityMainBinding
 import com.johannes.llgplanv2.settings.PrefKeys
 import com.johannes.llgplanv2.ui.login.LoginActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import missing.namespace.R
+import missing.namespace.databinding.ActivityMainBinding
 import org.jsoup.UncheckedIOException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
@@ -301,6 +303,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("RestrictedApi")
     fun showErrorSnackbar(message: String) {
         val snackbar = Snackbar.make(
             binding.root,
