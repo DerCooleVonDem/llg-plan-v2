@@ -9,4 +9,5 @@ Eine Android-App, die den Stundenplan und Vertretungsplan des [Landrat-Lucas-Gym
 - Fertig
 
 ## FAQ
-- TODO!
+- Welche Anmelde Daten werden benötigt?
+  - Du brauchst Zugang zu "selbstlernportal.de" und zu "DSB"/"DSB-Mobile"
