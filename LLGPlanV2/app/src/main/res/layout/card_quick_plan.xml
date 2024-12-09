@@ -135,8 +135,13 @@
                             android:text="" android:textSize="@dimen/textSize" android:layout_height="match_parent"
                             android:paddingLeft="@dimen/quickPlanColumn3PaddingLeft"
                             android:layout_marginLeft="@dimen/quickPlanColumn3MarginLeft"/>
-                        <ImageView android:src="@drawable/ic_message" android:scaleType="center"
-                            android:layout_height="match_parent" android:layout_width="wrap_content"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:scaleType="center"
+                            android:src="@drawable/ic_message"
+                            app:srcCompat="@android:drawable/ic_menu_info_details" />
                     </LinearLayout>
                 </TableRow>
                 <View android:layout_width="match_parent" android:layout_height="1dp"
@@ -160,8 +165,13 @@
                             android:text="" android:textSize="@dimen/textSize" android:layout_height="match_parent"
                             android:paddingLeft="@dimen/quickPlanColumn3PaddingLeft"
                             android:layout_marginLeft="@dimen/quickPlanColumn3MarginLeft"/>
-                        <ImageView android:src="@drawable/ic_message" android:scaleType="center"
-                            android:layout_height="match_parent" android:layout_width="wrap_content"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:scaleType="center"
+                            android:src="@drawable/ic_message"
+                            app:srcCompat="@android:drawable/ic_menu_info_details" />
                     </LinearLayout>
                 </TableRow>
                 <View android:layout_width="match_parent" android:layout_height="1dp"
@@ -185,8 +195,13 @@
                             android:text="" android:textSize="@dimen/textSize" android:layout_height="match_parent"
                             android:paddingLeft="@dimen/quickPlanColumn3PaddingLeft"
                             android:layout_marginLeft="@dimen/quickPlanColumn3MarginLeft"/>
-                        <ImageView android:src="@drawable/ic_message" android:scaleType="center"
-                            android:layout_height="match_parent" android:layout_width="wrap_content"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:scaleType="center"
+                            android:src="@drawable/ic_message"
+                            app:srcCompat="@android:drawable/ic_menu_info_details" />
                     </LinearLayout>
                 </TableRow>
                 <View android:layout_width="match_parent" android:layout_height="1dp"
@@ -210,8 +225,13 @@
                             android:text="" android:textSize="@dimen/textSize" android:layout_height="match_parent"
                             android:paddingLeft="@dimen/quickPlanColumn3PaddingLeft"
                             android:layout_marginLeft="@dimen/quickPlanColumn3MarginLeft"/>
-                        <ImageView android:src="@drawable/ic_message" android:scaleType="center"
-                            android:layout_height="match_parent" android:layout_width="wrap_content"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:scaleType="center"
+                            android:src="@drawable/ic_message"
+                            app:srcCompat="@android:drawable/ic_menu_info_details" />
                     </LinearLayout>
                 </TableRow>
                 <View android:layout_width="match_parent" android:layout_height="1dp"
@@ -235,8 +255,13 @@
                             android:text="" android:textSize="@dimen/textSize" android:layout_height="match_parent"
                             android:paddingLeft="@dimen/quickPlanColumn3PaddingLeft"
                             android:layout_marginLeft="@dimen/quickPlanColumn3MarginLeft"/>
-                        <ImageView android:src="@drawable/ic_message" android:scaleType="center"
-                            android:layout_height="match_parent" android:layout_width="wrap_content"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:scaleType="center"
+                            android:src="@drawable/ic_message"
+                            app:srcCompat="@android:drawable/ic_menu_info_details" />
                     </LinearLayout>
                 </TableRow>
                 <View android:layout_width="match_parent" android:layout_height="1dp"
@@ -260,8 +285,13 @@
                             android:text="" android:textSize="@dimen/textSize" android:layout_height="match_parent"
                             android:paddingLeft="@dimen/quickPlanColumn3PaddingLeft"
                             android:layout_marginLeft="@dimen/quickPlanColumn3MarginLeft"/>
-                        <ImageView android:src="@drawable/ic_message" android:scaleType="center"
-                            android:layout_height="match_parent" android:layout_width="wrap_content"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:scaleType="center"
+                            android:src="@drawable/ic_message"
+                            app:srcCompat="@android:drawable/ic_menu_info_details" />
                     </LinearLayout>
                 </TableRow>
                 <View android:layout_width="match_parent" android:layout_height="1dp"
@@ -285,8 +315,13 @@
                             android:text="" android:textSize="@dimen/textSize" android:layout_height="match_parent"
                             android:paddingLeft="@dimen/quickPlanColumn3PaddingLeft"
                             android:layout_marginLeft="@dimen/quickPlanColumn3MarginLeft"/>
-                        <ImageView android:src="@drawable/ic_message" android:scaleType="center"
-                            android:layout_height="match_parent" android:layout_width="wrap_content"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:scaleType="center"
+                            android:src="@drawable/ic_message"
+                            app:srcCompat="@android:drawable/ic_menu_info_details" />
                     </LinearLayout>
                 </TableRow>
                 <View android:layout_width="match_parent" android:layout_height="1dp"
@@ -310,8 +345,13 @@
                             android:text="" android:textSize="@dimen/textSize" android:layout_height="match_parent"
                             android:paddingLeft="@dimen/quickPlanColumn3PaddingLeft"
                             android:layout_marginLeft="@dimen/quickPlanColumn3MarginLeft"/>
-                        <ImageView android:src="@drawable/ic_message" android:scaleType="center"
-                            android:layout_height="match_parent" android:layout_width="wrap_content"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:scaleType="center"
+                            android:src="@drawable/ic_message"
+                            app:srcCompat="@android:drawable/ic_menu_info_details" />
                     </LinearLayout>
                 </TableRow>
                 <View android:layout_width="match_parent" android:layout_height="1dp"
@@ -336,8 +376,13 @@
                             android:text="" android:textSize="@dimen/textSize" android:layout_height="match_parent"
                             android:paddingLeft="@dimen/quickPlanColumn3PaddingLeft"
                             android:layout_marginLeft="@dimen/quickPlanColumn3MarginLeft"/>
-                        <ImageView android:src="@drawable/ic_message" android:scaleType="center"
-                            android:layout_height="match_parent" android:layout_width="wrap_content"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:scaleType="center"
+                            android:src="@drawable/ic_message"
+                            app:srcCompat="@android:drawable/ic_menu_info_details" />
                     </LinearLayout>
                 </TableRow>
             </TableLayout>

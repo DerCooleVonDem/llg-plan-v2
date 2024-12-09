@@ -1,7 +1,7 @@
 package com.johannes.llgplanv2.settings
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.johannes.llgplanv2.R
 
 class SettingsActivity : AppCompatActivity() {

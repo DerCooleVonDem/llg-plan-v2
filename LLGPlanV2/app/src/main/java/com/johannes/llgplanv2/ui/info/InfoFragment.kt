@@ -5,25 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.johannes.llgplanv2.MainActivity
-import com.johannes.llgplanv2.R
-import com.johannes.llgplanv2.api.CalendarUtils
-import com.johannes.llgplanv2.api.Teacher
 import com.johannes.llgplanv2.databinding.FragmentInfoBinding
 import com.johannes.llgplanv2.ui.teacherlist.TeacherListAdapter
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import java.lang.Exception
-import java.lang.NullPointerException
-import java.text.ParseException
-import java.text.SimpleDateFormat
-import kotlin.system.measureTimeMillis
 
 class InfoFragment : Fragment() {
 
@@ -38,9 +28,6 @@ class InfoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(InfoViewModel::class.java)
-
         _binding = FragmentInfoBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -69,7 +56,7 @@ class InfoFragment : Fragment() {
         binding.btnClearSearch.setOnClickListener {
             binding.editTextSearch.text.clear()
         }
-        binding.editTextSearch.doOnTextChanged { text, start, before, count ->
+        binding.editTextSearch.doOnTextChanged { text, _, _, _ ->
             teacherListAdapter.setSearchFilter(text.toString())
         }
 

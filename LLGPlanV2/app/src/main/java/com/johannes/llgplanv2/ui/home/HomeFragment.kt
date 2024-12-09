@@ -4,10 +4,18 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.*
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.LinearLayout
+import android.widget.PopupWindow
+import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -16,7 +24,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.johannes.llgplanv2.ConstValues
 import com.johannes.llgplanv2.MainActivity
 import com.johannes.llgplanv2.R
-import com.johannes.llgplanv2.api.*
+import com.johannes.llgplanv2.api.CalendarUtils
+import com.johannes.llgplanv2.api.DataManager
+import com.johannes.llgplanv2.api.Event
+import com.johannes.llgplanv2.api.EventList
+import com.johannes.llgplanv2.api.Student
+import com.johannes.llgplanv2.api.SubstitutionPlan
 import com.johannes.llgplanv2.databinding.FragmentHomeBinding
 import com.johannes.llgplanv2.databinding.PopupStudentEditorBinding
 import com.johannes.llgplanv2.settings.PrefKeys
@@ -32,7 +45,7 @@ import kotlinx.coroutines.withContext
 import org.jsoup.Jsoup
 import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
 
 class HomeFragment : Fragment() {
 
@@ -49,8 +62,6 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -280,7 +291,7 @@ class HomeFragment : Fragment() {
         popupBinding.studentListRecyclerView.layoutManager = LinearLayoutManager(context)
         val studentListAdapter = StudentListAdapter(DataManager.studentProfiles, popupWindow)
         popupBinding.studentListRecyclerView.adapter = studentListAdapter
-        popupBinding.editTextLastname.setOnEditorActionListener { v, actionId, event ->
+        popupBinding.editTextLastname.setOnEditorActionListener { _, actionId, _ ->
             return@setOnEditorActionListener when (actionId) {
                 EditorInfo.IME_ACTION_SEARCH -> {
                     popupBinding.buttonCheckStudent.callOnClick()
@@ -356,9 +367,6 @@ class HomeFragment : Fragment() {
 
                                     Student.SyncResponse.SEARCH_TO_SHORT ->
                                         showErrorDialog(resources.getString(R.string.input_to_short))
-
-                                    Student.SyncResponse.NO_RESULTS ->
-                                        showErrorDialog(resources.getString(R.string.student_sync_failed))
 
                                     else -> showErrorDialog(resources.getString(R.string.student_sync_failed))
                                 }

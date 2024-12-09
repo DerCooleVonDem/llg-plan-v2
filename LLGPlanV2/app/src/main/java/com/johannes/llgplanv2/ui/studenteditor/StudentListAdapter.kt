@@ -1,13 +1,11 @@
 package com.johannes.llgplanv2.ui.studenteditor
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.PopupWindow
 import androidx.recyclerview.widget.RecyclerView
 import com.johannes.llgplanv2.MainActivity
-import com.johannes.llgplanv2.MainViewModel
 import com.johannes.llgplanv2.api.DataManager
 import com.johannes.llgplanv2.api.Student
 import com.johannes.llgplanv2.databinding.StudentListItemBinding

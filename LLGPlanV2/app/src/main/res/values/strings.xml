@@ -15,7 +15,7 @@
 
     <!-- Student Editor Popup -->
     <string name="lastname">Nachname</string>
-    <string name="check_lastname">Check</string>
+    <string name="check_lastname">Suchen</string>
 
     <!-- Quick Plan -->
     <string name="no_substitution_found">Kein Vertretungsplan gefunden</string>
@@ -36,7 +36,7 @@
     <string name="login_title">Anmelden</string>
     <string name="login_username">Benutzer</string>
     <string name="login_password">Passwort</string>
-    <string name="login_confirm">Bestätigen</string>
+    <string name="login_confirm">Anmelden</string>
     <string name="login_wrong_credentials">Benutzer oder Passwort falsch!</string>
 
     <!-- NETWORK ERRORS -->

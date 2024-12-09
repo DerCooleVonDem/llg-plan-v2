@@ -13,7 +13,10 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.net.SocketTimeoutException
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Base64
+import java.util.Calendar
+import java.util.Locale
+import java.util.UUID
 import java.util.zip.GZIPInputStream
 import java.util.zip.GZIPOutputStream
 
@@ -135,7 +138,6 @@ class SubstitutionPlan() {
         // -------------------- PARSE --------------------
         val substitutionPage = substPage.parse()
         val tableTitles = substitutionPage.select("div.mon_title")
-        val tableInfos = substitutionPage.select("table.info")
         val tables = substitutionPage.select("table.mon_list")
         // iterate over all tables
         val substTable = mutableMapOf<String, MutableList<Substitution>>()

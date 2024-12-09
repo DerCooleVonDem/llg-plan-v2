@@ -1,8 +1,8 @@
 package com.johannes.llgplanv2.api
 
-import java.lang.Exception
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 
 class PlanInterpreter(val student: Student? = null,
                       val substitutionPlan: SubstitutionPlan? = null) {

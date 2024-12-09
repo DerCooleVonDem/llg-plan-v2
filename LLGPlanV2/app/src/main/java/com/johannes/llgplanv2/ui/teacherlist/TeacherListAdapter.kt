@@ -1,11 +1,15 @@
 package com.johannes.llgplanv2.ui.teacherlist
 
+import android.annotation.SuppressLint
 import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.LifecycleCoroutineScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.johannes.llgplanv2.MainActivity
 import com.johannes.llgplanv2.R
@@ -15,12 +19,6 @@ import com.johannes.llgplanv2.databinding.TeacherListItemBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.jsoup.UncheckedIOException
-import java.net.SocketTimeoutException
-import java.net.UnknownHostException
-import android.content.ClipboardManager
-import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
 
 
 class TeacherListAdapter(
@@ -48,6 +46,7 @@ class TeacherListAdapter(
         updateFilter()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun updateFilter() {
 
         filteredDataSet.clear()
@@ -70,6 +69,7 @@ class TeacherListAdapter(
         return ViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val teacher = filteredDataSet[position]
         holder.teacher = teacher
@@ -90,7 +90,6 @@ class TeacherListAdapter(
 
                 lifecycleScope.launch(Dispatchers.IO) {
                     var email = teacher.email
-                    val resources = MainActivity.instance.resources
 
                     if (email == "") {
                         MainActivity.instance.tryNetworkRequest {

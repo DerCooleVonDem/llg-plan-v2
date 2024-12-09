@@ -1,13 +1,14 @@
 package com.johannes.llgplanv2.ui.quickplan
 
-import android.graphics.Color
-import android.graphics.Shader
-import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.PopupWindow
+import android.widget.TableRow
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -19,9 +20,9 @@ import com.johannes.llgplanv2.api.Student
 import com.johannes.llgplanv2.databinding.CardQuickPlanBinding
 import com.johannes.llgplanv2.databinding.PopupPlanDetailsBinding
 import com.johannes.llgplanv2.ui.TileDrawable
-import kotlin.math.abs
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import kotlin.math.abs
 
 class QuickPlanViewPager2Adapter(
     val viewPager2: ViewPager2,

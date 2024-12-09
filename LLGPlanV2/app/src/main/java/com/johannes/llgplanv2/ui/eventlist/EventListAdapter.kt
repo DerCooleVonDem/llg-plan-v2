@@ -14,9 +14,9 @@ import com.johannes.llgplanv2.api.CalendarUtils
 import com.johannes.llgplanv2.api.Event
 import com.johannes.llgplanv2.api.Lesson
 import com.johannes.llgplanv2.databinding.ItemEventListBinding
-import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 
 class EventListAdapter(var dataSet: MutableList<Event>, var lessons: MutableList<Lesson>) : RecyclerView.Adapter<EventListAdapter.ViewHolder>() {
 

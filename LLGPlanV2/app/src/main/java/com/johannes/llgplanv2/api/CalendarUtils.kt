@@ -1,7 +1,9 @@
 package com.johannes.llgplanv2.api
 
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 class CalendarUtils {
     companion object {
@@ -11,7 +13,7 @@ class CalendarUtils {
         }
         fun stringToDate(string: String): Date {
             return SimpleDateFormat("dd.MM.yyyy-HH:mm:ss-Z", Locale.GERMANY)
-                .parse(string)
+                .parse(string) ?: Date()
         }
         fun stringToCalendar(string: String): Calendar {
             val calendar = Calendar.getInstance(Locale.GERMANY)
