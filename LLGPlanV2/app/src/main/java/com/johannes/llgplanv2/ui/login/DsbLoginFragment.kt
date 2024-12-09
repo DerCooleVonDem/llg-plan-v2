@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
+import com.johannes.llgplanv2.ConstValues
 import com.johannes.llgplanv2.R
 import com.johannes.llgplanv2.databinding.FragmentDsbLoginBinding
 import com.johannes.llgplanv2.settings.PrefKeys
+import java.security.MessageDigest
 
 class DsbLoginFragment(val loginActivity: LoginActivity) : Fragment() {
 
@@ -46,7 +48,14 @@ class DsbLoginFragment(val loginActivity: LoginActivity) : Fragment() {
     }
 
     private fun confirmCredentials() {
-        if (true) { // here you would check if they are correct
+        val dsbUserInputBinding = binding.usernameEditText.text.toString().trim();
+        val dsbPassInputBinding = binding.passwordEditText.text.toString();
+
+        val dsbUserInputCorrect = generateSha256(dsbUserInputBinding) == ConstValues.DSB_USER_HASH;
+        val dsbPassInputCorrect = generateSha256(dsbPassInputBinding) == ConstValues.DSB_PASSWORD_HASH;
+        val dsbCredentialsCorrect = dsbUserInputCorrect && dsbPassInputCorrect;
+
+        if (dsbCredentialsCorrect) { // here you would check if they are correct
             loginActivity.sharedPref.edit().also {
                 it.putBoolean(PrefKeys.dsbLoginDone, true)
                 it.putString(PrefKeys.dsbLoginUser, binding.usernameEditText.text.toString().trim())
@@ -56,6 +65,13 @@ class DsbLoginFragment(val loginActivity: LoginActivity) : Fragment() {
         } else {
             binding.credentialsWrongCardView.visibility = View.VISIBLE
         }
+    }
+
+    private fun generateSha256(input: String): String {
+        val bytes = input.toByteArray()
+        val md = MessageDigest.getInstance("SHA-256")
+        val digest = md.digest(bytes)
+        return digest.fold("", { str, it -> str + "%02x".format(it) })
     }
 
 }

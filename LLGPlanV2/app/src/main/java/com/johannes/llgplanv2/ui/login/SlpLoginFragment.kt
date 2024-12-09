@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
+import com.johannes.llgplanv2.ConstValues
 import com.johannes.llgplanv2.R
 import com.johannes.llgplanv2.databinding.FragmentSlpLoginBinding
 import com.johannes.llgplanv2.settings.PrefKeys
+import java.security.MessageDigest
 
 class SlpLoginFragment(val loginActivity: LoginActivity) : Fragment() {
 
@@ -46,11 +48,18 @@ class SlpLoginFragment(val loginActivity: LoginActivity) : Fragment() {
     }
 
     private fun confirmCredentials() {
-        if (true) { // here you would check if they are correct
+        val splUserInputBinding = binding.usernameEditText.text.toString().trim();
+        val splPassInputBinding = binding.passwordEditText.text.toString();
+
+        val splUserInputCorrect = generateSha256(splUserInputBinding) == ConstValues.SPL_USER_HASH;
+        val splPassInputCorrect = generateSha256(splPassInputBinding) == ConstValues.SPL_PASSWORD_HASH;
+        val splCredentialsCorrect = splUserInputCorrect && splPassInputCorrect;
+
+        if (splCredentialsCorrect) { // here you would check if they are correct
                 loginActivity.sharedPref.edit().also {
                     it.putBoolean(PrefKeys.slpLoginDone, true)
-                    it.putString(PrefKeys.slpLoginUser, binding.usernameEditText.text.toString().trim())
-                    it.putString(PrefKeys.slpLoginPassword, binding.passwordEditText.text.toString())
+                    it.putString(PrefKeys.slpLoginUser, splUserInputBinding)
+                    it.putString(PrefKeys.slpLoginPassword, splPassInputBinding)
                 }.apply()
                 loginActivity.nextFragment()
         } else {
@@ -58,4 +67,10 @@ class SlpLoginFragment(val loginActivity: LoginActivity) : Fragment() {
         }
     }
 
+    private fun generateSha256(input: String): String {
+        val bytes = input.toByteArray()
+        val md = MessageDigest.getInstance("SHA-256")
+        val digest = md.digest(bytes)
+        return digest.fold("", { str, it -> str + "%02x".format(it) })
+    }
 }
