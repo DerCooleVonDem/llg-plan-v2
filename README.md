@@ -7,3 +7,6 @@ Eine Android-App, die den Stundenplan und Vertretungsplan des [Landrat-Lucas-Gym
 - Erlaube unbekannte Downloads
 - Installiere die App
 - Fertig
+
+## FAQ
+- TODO!
