@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.johannes.llgplanv2.BuildConfig
 import com.johannes.llgplanv2.ConstValues
 import com.johannes.llgplanv2.MainActivity
 import com.johannes.llgplanv2.R
@@ -63,9 +62,10 @@ class HomeFragment : Fragment() {
         lifecycleScope.launch(Dispatchers.IO) {
             MainActivity.instance.tryNetworkRequest {
                 val response = Jsoup.connect(ConstValues.VERSION_CODE_URL)
+
                     .ignoreContentType(true).execute()
                 val versionCode = response.body().toInt()
-                val outdated = versionCode > BuildConfig.VERSION_CODE
+                val outdated = versionCode > 2
                 withContext(Dispatchers.Main) {
                     binding.infoCardViews.setEnabled(
                         InformationCardView.Type.APP_VERSION_OUTDATED, outdated)
